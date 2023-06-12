@@ -1,0 +1,18 @@
+.header{
+    display: flex;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 10px 10px 30px;
+    justify-content: flex-start;
+}
+
+.headerShop a{
+    border-right: 3px solid rgb(103, 102, 102);
+    padding: 9px 35px 9px 6px;
+}
+
+.headerCart a{
+    text-decoration: none;
+    padding-left: 35px;
+    padding: 9px 35px 9px 35px;
+}
