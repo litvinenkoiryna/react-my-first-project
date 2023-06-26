@@ -1,3 +1,8 @@
+.container{
+    display: flex;
+    flex-wrap: wrap
+}
+
 .card{
     width: 350px;
     border-radius: 10px;
@@ -14,9 +19,8 @@
     
 }
 
-.title{
+.title, .price, .description{
     margin: 0px 20px 10px 20px;
-    font-size: 15px;
     color: grey;
     font-weight: 400;
 }
@@ -31,4 +35,11 @@
     margin: 0px 10px 10px 184px;
     cursor: pointer;
     
+}
+
+.img{
+    width: 350px;
+    height: 200px;
+    align-items: center;
+
 }
