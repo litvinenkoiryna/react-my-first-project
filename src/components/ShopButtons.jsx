@@ -1,24 +1,20 @@
 import React, {useState} from "react";
-import styles from "../styles/Navbar.module.css";
+import styles from "../styles/ShopButtons.module.css";
 import data from '../data';
 
 
-function Navbar({props}) {
-  let [title, setTitle] = useState('');
-  console.log({title});
+function ShopButtons({setName}) {
+   
 
-
-    return (
+  return (
     <div className={styles.navBar}>
-      <h2 className={styles.title}>Shops:</h2>
-      <nav className={styles.nav}>
+          <nav className={styles.nav}>
           <div>
             {data.map((shop) => (
             <button
                key={shop.id}
                className={styles.item}
-               onClick={() => setTitle(shop.title)}
-              
+               onClick={() => setName(shop.title)}
             >
                {shop.title}
             </button>
@@ -29,4 +25,4 @@ function Navbar({props}) {
   );
 }
 
-export default Navbar;
+export default ShopButtons;
