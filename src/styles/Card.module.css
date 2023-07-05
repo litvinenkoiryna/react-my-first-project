@@ -34,9 +34,14 @@
     color: grey;
     margin: 0px 10px 10px 184px;
     cursor: pointer;
-    
+
 }
 
+.btn:hover{
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    transition: 1ms;
+}
 .img{
     width: 350px;
     height: 200px;

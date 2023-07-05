@@ -8,4 +8,11 @@
   margin: 0 auto;
   height: 1400px;
 }
+.Header{
+  display: flex;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 40px 10px 10px 30px;
+  justify-content: flex-start;
+}
 

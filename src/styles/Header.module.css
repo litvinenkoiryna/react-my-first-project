@@ -1,4 +1,4 @@
-.header{
+.nav{
     display: flex;
     font-size: 20px;
     font-weight: 600;
@@ -6,13 +6,16 @@
     justify-content: flex-start;
 }
 
-.headerShop a{
+.shopsItem a{
     border-right: 3px solid rgb(103, 102, 102);
     padding: 9px 35px 9px 6px;
+    text-decoration: none;
+    color: gray;
 }
 
-.headerCart a{
+.cartItem a{
     text-decoration: none;
     padding-left: 35px;
     padding: 9px 35px 9px 35px;
+    color: gray;
 }
