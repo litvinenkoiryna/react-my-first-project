@@ -18,7 +18,7 @@ function ShopButtons({setName}) {
             >
                {shop.title}
             </button>
-            ))}
+            ))} 
            </div>
       </nav>
     </div>
