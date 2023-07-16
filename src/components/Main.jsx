@@ -16,7 +16,7 @@ function Main({addItem}) {
       </div>
       <div className={styles.container}>
         {shopCards.cards.map((item) => (
-          <Card key={item.id} item={item} addItem = {addItem} />
+          <Card key={item.id} item={item} addItem={addItem} />
         ))}
       </div>
     </div>

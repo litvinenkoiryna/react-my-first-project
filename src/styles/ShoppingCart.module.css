@@ -1,4 +1,4 @@
-.cart{
+.cartTitle{
     margin-top: 20px;
 }
 
@@ -8,7 +8,31 @@
        
 }
 
-.item{
+table{
+    border-spacing: 0px;
+    
+}
+
+th{
+    border: 1px dotted black;
+    width: 150px;
+    background-color: aqua;
+}
+
+td{
+    border: 1px dotted black;
+    width: 150px;  
+}
+
+.cartBody{
+    text-align: center;
+}
+
+.img{
+    width: 140px;
+}
+
+/* .item{
     border: 1px solid black;
     padding: 10px;
     font-size: 24px;
@@ -18,4 +42,4 @@
 
 .message{
     color: blueviolet;
-}
+} */

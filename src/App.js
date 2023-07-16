@@ -8,26 +8,63 @@ import React, {useState} from "react";
 
 function App() {
   
-let [items, setItems]  = useState([ ])
-  console.log(items);
+    const [items, setItems]  = useState([ ]);
+    const result = items.reduce(
+    (previousValue, currentItem) => previousValue+currentItem.count*currentItem.price,
+    0
+    );
+  //console.log(items);
 
-let addItem = (title, price) => {
+let addItem = (img, title, price, count) => {
     let newItem = {
       id: Date.now(),
+      img,
       title,
       price,
+      count: 1,
     }
 setItems([...items, newItem]);
 }
 
-       
+const removeItem = (item) => {
+    setItems(items.filter(i => i.id !== item.id))
+}
+
+const handleIncreaceCount = (id) => {
+  setItems(items.map(item => {
+    if (item.id === id) {
+      item.count++
+    }
+    return item;
+  }));
+ }
+
+ const handleDecreaceCount = (id, count) => {
+    if(count<2) {
+      count = 1
+    } else {
+     setItems(items.map(item => {
+        if (item.id === id) {
+           item.count--
+    }
+    return item;
+  }));
+ }
+}
+      
    return (
     <BrowserRouter>
         <div className="App">
                 <Header />
                 <Routes>
                     <Route path='/' element={<Main  addItem = {addItem}/>} />
-                    <Route path='/shopping_cart' element= {<ShoppingCart items = {items} />} />
+                    <Route path='/shopping_cart' element = {<ShoppingCart 
+                                              remove={removeItem}
+                                              items={items}
+                                              result={result}
+                                              increaceCount={handleIncreaceCount} 
+                                              decreaceCount={handleDecreaceCount}
+                                                              />} />
                 </Routes>     
         </div>
     </BrowserRouter>
