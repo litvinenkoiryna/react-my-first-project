@@ -2,7 +2,13 @@ import React from "react";
 import styles from "../styles/ShoppingCart.module.css";
 import FooterCart from "./FooterCart";
 
-const ShoppingCart = ({ items, remove, increaceCount, decreaceCount, result}) => {
+const ShoppingCart = ({
+  items,
+  remove,
+  increaceCount,
+  decreaceCount,
+  result,
+}) => {
   //console.log(items);
   return (
     <table className={styles.cartTitle}>
@@ -22,17 +28,29 @@ const ShoppingCart = ({ items, remove, increaceCount, decreaceCount, result}) =>
             <img className={styles.img} src={item.img} alt={item.title} />
           </td>
           <td className={styles.item}>{item.title}</td>
-          <td className={styles.item}>{item.price}$</td>
-          <td>
-            <button onClick={()=>decreaceCount(item.id,item.count)}>-</button>
-            <span className={styles.count}>{(item.count)} </span>
-            <button onClick={()=>increaceCount(item.id)}>+</button>
+          <td className={styles.item}>
+            {new Intl.NumberFormat("ru-RU", {
+              style: "currency",
+              currency: "USD",
+            }).format(item.price)}
           </td>
-          <td>{item.price * item.count}</td>
+          <td>
+            <button onClick={() => decreaceCount(item.id, item.count)}>
+              -
+            </button>
+            <span className={styles.count}>{item.count} </span>
+            <button onClick={() => increaceCount(item.id)}>+</button>
+          </td>
+          <td>
+            {new Intl.NumberFormat("ru-RU", {
+              style: "currency",
+              currency: "USD",
+            }).format(item.price * item.count)}
+          </td>
           <button onClick={() => remove(item)}>X</button>
         </tr>
       ))}
-      <FooterCart result = {result}/>    
+      <FooterCart items={items} result={result} />
     </table>
   );
 };

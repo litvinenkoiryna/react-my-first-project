@@ -2,8 +2,13 @@
     margin-top: 20px;
 }
 
-.value{
+.result{
     font-size: 25px;
     color: blue;
     margin-left: 20px;
+}
+
+span{
+    font-size: 25px;
+    font-weight: 600;
 }

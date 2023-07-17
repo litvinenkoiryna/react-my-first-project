@@ -4,9 +4,18 @@ import styles from "../styles/FooterCart.module.css";
 const FooterCart = (props) => {
     return (
         <div className={styles.footer}>
-            <span>
-                Загальна вартість замовлення: <span className={styles.value}>{props.result}</span>
-            </span>
+            {props.items.length>0?
+                <span>
+                    Загальна вартість замовлення: <span className={styles.result}>
+                        {new Intl.NumberFormat('ru-RU', {
+                            style: 'currency',
+                            currency: 'USD',
+                        }).format(props.result)}</span>
+                </span>
+                : <span>
+                    Ваша корзина порожня
+                </span>
+            }
         </div>
     )
 }
