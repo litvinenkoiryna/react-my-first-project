@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "../styles/ShoppingCart.module.css";
 import FooterCart from "./FooterCart";
 
@@ -9,8 +9,8 @@ const ShoppingCart = ({
   decreaceCount,
   result,
 }) => {
-  //console.log(items);
-  return (
+   return (
+    <div>
     <table className={styles.cartTitle}>
       <tread>
         <tr>
@@ -50,9 +50,10 @@ const ShoppingCart = ({
           <button onClick={() => remove(item)}>X</button>
         </tr>
       ))}
-      <FooterCart items={items} result={result} />
+      
     </table>
-  );
+    <FooterCart items={items} result={result} />
+  </div>);
 };
 
 export default ShoppingCart;

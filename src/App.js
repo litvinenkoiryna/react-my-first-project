@@ -3,18 +3,26 @@ import Header from './components/Header';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Main from "./components/Main";
 import ShoppingCart from './components/ShoppingCart';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 
 function App() {
   
-    const [items, setItems]  = useState([ ]);
-    const result = items.reduce(
+const [items, setItems]  = useState([ ]);
+
+  useEffect(() =>{
+      setItems(JSON.parse(localStorage.getItem('items')));
+  }, []);
+  
+  useEffect(() =>{
+    localStorage.setItem('items', JSON.stringify(items));
+  }, [items]);
+
+const result = items.reduce(
     (previousValue, currentItem) => previousValue+currentItem.count*currentItem.price,
     0
     );
-  //console.log(items);
-
+ 
 let addItem = (img, title, price, count) => {
     let newItem = {
       id: Date.now(),
@@ -51,7 +59,7 @@ const handleIncreaceCount = (id) => {
   }));
  }
 }
-      
+
    return (
     <BrowserRouter>
         <div className="App">
@@ -64,7 +72,7 @@ const handleIncreaceCount = (id) => {
                                               result={result}
                                               increaceCount={handleIncreaceCount} 
                                               decreaceCount={handleDecreaceCount}
-                                                              />} />
+                                              />} />
                 </Routes>     
         </div>
     </BrowserRouter>
