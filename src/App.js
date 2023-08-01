@@ -16,13 +16,16 @@ const [items, setItems]  = useState([ ]);
   
   useEffect(() =>{
     localStorage.setItem('items', JSON.stringify(items));
-  }, [items]);
+  }, [items]);// цей юз ефект надає можливість не міняти стейт при перезавантаженні сторінки. Якщо його не написать, а додати нижче 
+              //"localStorage.setItem('items', JSON.stringify(items));" в кону функцію, що зписує зміни, то працює не коректно. при видаленні або
+              //додаванні товару зміни записуються в стейт, але при перезавантаженні пропадають(саме останні зміни).наприклад при додаванні двух товарів
+              // другий не збережеться при перезавантаженні
 
 const result = items.reduce(
     (previousValue, currentItem) => previousValue+currentItem.count*currentItem.price,
     0
     );
- 
+
 let addItem = (img, title, price, count) => {
     let newItem = {
       id: Date.now(),
@@ -30,12 +33,15 @@ let addItem = (img, title, price, count) => {
       title,
       price,
       count: 1,
-    }
+    };
+//localStorage.setItem('items', JSON.stringify(items));  
 setItems([...items, newItem]);
+
 }
 
 const removeItem = (item) => {
-    setItems(items.filter(i => i.id !== item.id))
+    setItems(items.filter(i => i.id !== item.id));
+    localStorage.setItem('items', JSON.stringify(items));  
 }
 
 const handleIncreaceCount = (id) => {
@@ -45,6 +51,7 @@ const handleIncreaceCount = (id) => {
     }
     return item;
   }));
+  //localStorage.setItem('items', JSON.stringify(items));  
  }
 
  const handleDecreaceCount = (id, count) => {
@@ -57,6 +64,7 @@ const handleIncreaceCount = (id) => {
     }
     return item;
   }));
+  //localStorage.setItem('items', JSON.stringify(items));  
  }
 }
 
@@ -72,7 +80,7 @@ const handleIncreaceCount = (id) => {
                                               result={result}
                                               increaceCount={handleIncreaceCount} 
                                               decreaceCount={handleDecreaceCount}
-                                              />} />
+                                             />} />
                 </Routes>     
         </div>
     </BrowserRouter>
